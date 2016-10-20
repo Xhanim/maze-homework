@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Teleporter : MonoBehaviour {
-
+public class Teleporter : MonoBehaviour, TargetAnalyzer
+{
     private TeleportWaypoint teleportWaypoint;
 
     void Update () {
@@ -27,7 +28,7 @@ public class Teleporter : MonoBehaviour {
         }
     }
 
-    public bool IsWaypointInSight()
+    public bool InSight()
     {
         return teleportWaypoint != null;
     }

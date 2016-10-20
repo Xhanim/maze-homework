@@ -6,11 +6,11 @@ public class Crosshair : MonoBehaviour
     public Texture2D crosshairTexture;
     public Texture2D crosshairActiveTexture;
     public Rect position;
-    private Teleporter teleporter;
+    private GauntletController gauntlet;
 
     void Start()
     {
-        teleporter = GetComponent<Teleporter>();
+        gauntlet = GetComponent<GauntletController>();
         position = new Rect((Screen.width - crosshairTexture.width) / 2, (Screen.height - crosshairTexture.height) / 2, crosshairTexture.width, crosshairTexture.height);
     }
 
@@ -18,8 +18,8 @@ public class Crosshair : MonoBehaviour
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = false;
-
-        if (teleporter != null && teleporter.IsWaypointInSight())
+        
+        if(gauntlet.getTargetAnalyzer().InSight())
         {
             GUI.DrawTexture(position, crosshairActiveTexture);
         }
