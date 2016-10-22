@@ -12,7 +12,7 @@ public class GauntletController : MonoBehaviour {
 	void Start () {
         powers = new List<MonoBehaviour>();
         powers.Add(GetComponent<Grab>());
-        powers.Add(GetComponent<Fireball>());
+        powers.Add(GetComponent<FireballShooter>());
         powers.Add(GetComponent<Teleporter>());
     }
 
