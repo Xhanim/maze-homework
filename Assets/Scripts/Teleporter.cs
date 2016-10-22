@@ -2,8 +2,9 @@
 using System.Collections;
 using System;
 
-public class Teleporter : MonoBehaviour, TargetAnalyzer
+public class Teleporter : MonoBehaviour, ITargetAnalyzer
 {
+    public Texture2D crosshair;
     private TeleportWaypoint teleportWaypoint;
 
     void Update () {
@@ -31,5 +32,10 @@ public class Teleporter : MonoBehaviour, TargetAnalyzer
     public bool InSight()
     {
         return teleportWaypoint != null;
+    }
+
+    public Texture2D GetInSightTexture()
+    {
+        return crosshair;
     }
 }

@@ -2,16 +2,12 @@
 using System.Collections;
 using System;
 
-public class Fireball : MonoBehaviour, TargetAnalyzer {
+public class Fireball : MonoBehaviour, ITargetAnalyzer {
     public GameObject prefab;
     public GameObject spawn;
     public float distance = 10;
     public float force = 2500;
-
-    public bool InSight()
-    {
-        return false;
-    }
+    public Texture2D crosshair;
 
     // Use this for initialization
     void Start () {
@@ -28,5 +24,15 @@ public class Fireball : MonoBehaviour, TargetAnalyzer {
             GameObject ballInstance = Instantiate(prefab, spawn.transform.position, spawn.transform.rotation) as GameObject;
             ballInstance.GetComponent<Rigidbody>().AddForce(spawn.transform.forward * force);
         }
+    }
+
+    public bool InSight()
+    {
+        return true;
+    }
+
+    public Texture2D GetInSightTexture()
+    {
+        return crosshair;
     }
 }

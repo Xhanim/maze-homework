@@ -21,15 +21,15 @@ public class GauntletController : MonoBehaviour {
     {
         if (Input.GetAxis("Mouse ScrollWheel") < 0) //  left
         {
-            previous();
+            Previous();
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0) // right
         {
-            next();
+            Next();
         }
     }
 
-    private void previous()
+    private void Previous()
     {
         currentPower--;
         // loop to the right
@@ -37,10 +37,10 @@ public class GauntletController : MonoBehaviour {
         {
             currentPower = 2;
         }
-        updatePower();
+        UpdatePower();
     }
 
-    private void next()
+    private void Next()
     {
         currentPower++;
         // loop to the left
@@ -48,10 +48,10 @@ public class GauntletController : MonoBehaviour {
         {
             currentPower = 0;
         }
-        updatePower();
+        UpdatePower();
     }
 
-    private void updatePower()
+    private void UpdatePower()
     {
         for (int i = 0; i < powers.Count; i++)
         {
@@ -66,8 +66,8 @@ public class GauntletController : MonoBehaviour {
         }
     }
 
-    public TargetAnalyzer getTargetAnalyzer()
+    public ITargetAnalyzer GetTargetAnalyzer()
     {
-        return (TargetAnalyzer) powers[currentPower];
+        return (ITargetAnalyzer) powers[currentPower];
     }
 }

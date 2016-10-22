@@ -18,9 +18,9 @@ public class Crosshair : MonoBehaviour
         UnityEngine.Cursor.visible = false;
 
         Texture2D activeTexture;
-        if (gauntlet.getTargetAnalyzer().InSight())
+        if (gauntlet.GetTargetAnalyzer().InSight())
         {
-            activeTexture = crosshairActiveTexture;
+            activeTexture = gauntlet.GetTargetAnalyzer().GetInSightTexture();
         }
         else
         {

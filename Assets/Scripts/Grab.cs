@@ -2,16 +2,13 @@
 using System.Collections;
 using System;
 
-public class Grab : MonoBehaviour, TargetAnalyzer {
+public class Grab : MonoBehaviour, ITargetAnalyzer {
+    public Texture2D grabTexture;
+    public Texture2D actionTexture;
     private GameObject target;
     private Rigidbody objectRigidBody;
     private bool grabbing;
     private bool inSight;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	void Update () {
         DetectTarget();
@@ -70,7 +67,7 @@ public class Grab : MonoBehaviour, TargetAnalyzer {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit) && 
-            (hit.collider.gameObject.tag.Equals("Grabbable") || hit.collider.gameObject.tag.Equals("Switch")))
+            (hit.collider.gameObject.tag.Equals("Grabbable") || (hit.collider.gameObject.tag.Equals("Switch") && grabbing ) ))
         {
             // only pre assign if it's a grabbable object, if it's a switch let the code in the update handle it
             // this is only to activate the crosshair
@@ -94,5 +91,10 @@ public class Grab : MonoBehaviour, TargetAnalyzer {
     public bool InSight()
     {
         return inSight;
+    }
+
+    public Texture2D GetInSightTexture()
+    {
+        return grabbing ? actionTexture : grabTexture;
     }
 }
