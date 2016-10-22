@@ -5,11 +5,13 @@ using System;
 public class Grab : MonoBehaviour, ITargetAnalyzer {
     public Texture2D grabTexture;
     public Texture2D actionTexture;
+    public Texture2D holdingTexture;
     public float maxDistance = 4;
     private GameObject target;
     private Rigidbody objectRigidBody;
     private bool grabbing;
     private bool inSight;
+    private bool switchInSight;
     private Camera camera;
 
     void Start()
@@ -67,6 +69,7 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
                 target = null;
                 objectRigidBody = null;
                 grabbing = false;
+                switchInSight = false;
             }
         }
     }
@@ -91,6 +94,10 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
             {
                 target = hit.collider.gameObject;
             }
+            if (hit.collider.gameObject.tag.Equals("Switch") && grabbing)
+            {
+                switchInSight = true;
+            }
             inSight = true;
         }else
         {
@@ -100,16 +107,17 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
                 target = null;
             }
             inSight = false;
+            switchInSight = false;
         }
     }
 
     public bool InSight()
     {
-        return inSight;
+        return inSight || grabbing;
     }
 
     public Texture2D GetInSightTexture()
     {
-        return grabbing ? actionTexture : grabTexture;
+        return switchInSight ? actionTexture : ( grabbing ? holdingTexture : grabTexture);
     }
 }
