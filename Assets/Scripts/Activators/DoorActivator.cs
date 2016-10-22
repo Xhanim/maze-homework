@@ -31,7 +31,6 @@ public class DoorActivator : BaseActivator {
     private void CheckActivation(int count)
     {
         currentActivations = Mathf.Clamp(currentActivations + count, 0, activations);
-        Debug.Log("Current activations: " + currentActivations);
         if (currentActivations >= activations)
         {
             animator.SetBool("IsOpen", true);

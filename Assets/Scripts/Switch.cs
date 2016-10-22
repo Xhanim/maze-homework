@@ -28,7 +28,6 @@ public class Switch : MonoBehaviour {
 
             attachedChild = child;
 
-            Debug.Log("cube material: " + child.GetComponent<Renderer>().material.name);
             // call activators
             // check material name? if it has one and there is no match then dont activate!
             if (type == child.GetComponent<Cube>().type)
