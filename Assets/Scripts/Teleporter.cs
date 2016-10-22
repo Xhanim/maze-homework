@@ -7,6 +7,12 @@ public class Teleporter : MonoBehaviour, ITargetAnalyzer
     public Texture2D crosshair;
     public float maxDistance = 13;
     private TeleportWaypoint teleportWaypoint;
+    private Camera camera;
+
+    void Start()
+    {
+        camera = GetComponentInChildren<Camera>();
+    }
 
     void Update () {
         UpdateDetectedWaypoint();
@@ -18,7 +24,7 @@ public class Teleporter : MonoBehaviour, ITargetAnalyzer
 
     void UpdateDetectedWaypoint()
     {
-        Transform cameraTransform = Camera.main.transform;
+        Transform cameraTransform = camera.transform;
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit) && maxDistance >= hit.distance)

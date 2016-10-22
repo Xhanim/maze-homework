@@ -10,8 +10,14 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
     private Rigidbody objectRigidBody;
     private bool grabbing;
     private bool inSight;
-	
-	void Update () {
+    private Camera camera;
+
+    void Start()
+    {
+        camera = GetComponentInChildren<Camera>();
+    }
+
+    void Update () {
         DetectTarget();
 
         if (Input.GetMouseButtonDown(0) && target)
@@ -67,7 +73,7 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
 
     private Ray getCameraRay()
     {
-        Transform cameraTransform = Camera.main.transform;
+        Transform cameraTransform = camera.transform;
         return new Ray(cameraTransform.position, cameraTransform.forward);
     }
 
