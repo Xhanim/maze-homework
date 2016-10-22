@@ -5,6 +5,7 @@ using System;
 public class Grab : MonoBehaviour, ITargetAnalyzer {
     public Texture2D grabTexture;
     public Texture2D actionTexture;
+    public float maxDistance = 4;
     private GameObject target;
     private Rigidbody objectRigidBody;
     private bool grabbing;
@@ -39,8 +40,7 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
             else {
                 // extra reycast to check if it's looking into a switch to auto attach
                 RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+                Ray ray = getCameraRay();
                 objectRigidBody.useGravity = true;
                 // Cast a ray
                 if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag.Equals("Switch"))
@@ -65,11 +65,17 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
         }
     }
 
+    private Ray getCameraRay()
+    {
+        Transform cameraTransform = Camera.main.transform;
+        return new Ray(cameraTransform.position, cameraTransform.forward);
+    }
+
     private void DetectTarget()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit) && 
+        Ray ray = getCameraRay();
+        if (Physics.Raycast(ray, out hit) && maxDistance >= hit.distance &&
             (hit.collider.gameObject.tag.Equals("Grabbable") || (hit.collider.gameObject.tag.Equals("Switch") && grabbing ) ))
         {
             // only pre assign if it's a grabbable object, if it's a switch let the code in the update handle it

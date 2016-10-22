@@ -12,6 +12,11 @@ public class Crosshair : MonoBehaviour
         gauntlet = GetComponent<GauntletController>();
     }
 
+    void Update()
+    {
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 5);
+    }
+
     void OnGUI()
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;

@@ -13,8 +13,9 @@ public class FireballShooter : MonoBehaviour, ITargetAnalyzer {
         if (Input.GetButtonDown("Fire1"))
         {
             // Make spawn look at camera position
-            Vector3 cameraPosition = Camera.main.transform.position;
-            cameraPosition += Camera.main.transform.forward * aimCenterDistance;
+            Transform cameraTransform = Camera.main.transform;
+            Vector3 cameraPosition = cameraTransform.position;
+            cameraPosition += cameraTransform.forward * aimCenterDistance;
             spawn.transform.LookAt(cameraPosition);
             GameObject ballInstance = Instantiate(prefab, spawn.transform.position, spawn.transform.rotation) as GameObject;
             ballInstance.GetComponent<Rigidbody>().AddForce(spawn.transform.forward * impulse, ForceMode.Impulse);
