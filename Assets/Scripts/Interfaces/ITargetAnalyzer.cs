@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+/**
+ * Used by the glove to determinate if a power has something of interest in sight and if it should apply a particular crosshair to it.
+ * */
 public interface ITargetAnalyzer
 {
     /**

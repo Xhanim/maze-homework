@@ -45,8 +45,11 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
                 // Cast a ray
                 if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag.Equals("Switch"))
                 {
+                    Switch script = hit.collider.gameObject.GetComponent<Switch>();
+                    // if it's null it might be in the parent! (It's pointing to the center of the switch which is another object)
+                    script = hit.collider.gameObject.GetComponentInParent<Switch>();
                     // attach it? if returns false then the switch is already taken so it's ignored
-                    if (!hit.collider.gameObject.GetComponent<Switch>().Attach(target)) return;
+                    if (!script.Attach(target)) return;
                 }
                 else
                 {
