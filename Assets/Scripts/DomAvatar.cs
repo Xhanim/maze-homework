@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Avatar : MonoBehaviour {
+public class DomAvatar : MonoBehaviour {
 
 	private float movementSpeed = 20;
 	private float gravity = -5;
