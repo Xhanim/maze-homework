@@ -51,7 +51,7 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
                 Ray ray = getCameraRay();
                 objectRigidBody.useGravity = true;
                 // Cast a ray
-                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag.Equals("Switch"))
+                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.CompareTag("Switch"))
                 {
                     Switch script = hit.collider.gameObject.GetComponent<Switch>();
                     // if it's null it might be in the parent! (It's pointing to the center of the switch which is another object)
@@ -85,16 +85,16 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
         RaycastHit hit;
         Ray ray = getCameraRay();
         if (Physics.Raycast(ray, out hit) && maxDistance >= hit.distance &&
-            (hit.collider.gameObject.tag.Equals("Grabbable") || (hit.collider.gameObject.tag.Equals("Switch") && grabbing ) ))
+            (hit.collider.gameObject.CompareTag("Grabbable") || (hit.collider.gameObject.CompareTag("Switch") && grabbing ) ))
         {
             // only pre assign if it's a grabbable object, if it's a switch let the code in the update handle it
             // this is only to activate the crosshair
             // only set if it's nothing on grab at the moment!
-            if (hit.collider.gameObject.tag.Equals("Grabbable") && !grabbing)
+            if (hit.collider.gameObject.CompareTag("Grabbable") && !grabbing)
             {
                 target = hit.collider.gameObject;
             }
-            if (hit.collider.gameObject.tag.Equals("Switch") && grabbing)
+            if (hit.collider.gameObject.CompareTag("Switch") && grabbing)
             {
                 switchInSight = true;
             }
