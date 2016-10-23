@@ -7,7 +7,7 @@ public class MovePattern : MonoBehaviour
 
     public enum LoopMode
     {
-        NONE, LOOP, REVERSE
+        NONE, LOOP, REVERSE, RESTART
     }
 
     public List<GameObject> positionObjects;
@@ -28,7 +28,8 @@ public class MovePattern : MonoBehaviour
         {
             GameObject originObject = new GameObject();
             originObject.transform.position = lastPosition;
-            positionObjects.Add(originObject);
+            positionObjects.Insert(0, originObject);
+            currentIndex = 1;
         }
         rigidBody = GetComponent<Rigidbody>();
     }
@@ -43,14 +44,19 @@ public class MovePattern : MonoBehaviour
         currentTime += Time.fixedDeltaTime;
         float step = currentTime / timePerPosition;
         Vector3 newPosition = getNewPosition(currentObject.transform.position, step);
+        Vector3 currentPosition = transform.position;
+        updatePosition(newPosition);
         if (newPosition == currentObject.transform.position)
         {
             loopCount++;
             currentTime = 0;
             lastPosition = newPosition;
-            updateIndex();
+            handleTargetChange();
         }
-        Vector3 currentPosition = transform.position;
+    }
+
+    private void updatePosition(Vector3 newPosition)
+    {
         if (rigidBody != null)
         {
             rigidBody.MovePosition(newPosition);
@@ -61,7 +67,7 @@ public class MovePattern : MonoBehaviour
         }
     }
 
-    private void updateIndex()
+    private void handleTargetChange()
     {
         currentIndex = currentIndex + 1 * direction;
         if (currentIndex > positionObjects.Count - 1 || currentIndex < 0)
@@ -74,6 +80,12 @@ public class MovePattern : MonoBehaviour
             {
                 direction *= -1;
                 currentIndex = currentIndex + 2 * direction;
+            } else if (loopMode == LoopMode.RESTART)
+            {
+                currentIndex = 1;
+                Vector3 newPosition = positionObjects[0].transform.position;
+                updatePosition(newPosition);
+                lastPosition = newPosition;
             }
         }
     }
