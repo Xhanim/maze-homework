@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class MovePattern : MonoBehaviour
 {
-
     public enum LoopMode
     {
         NONE, RING, REVERSE, RESTART
@@ -91,6 +90,12 @@ public class MovePattern : MonoBehaviour
                 Vector3 newPosition = positionObjects[0].transform.position;
                 updatePosition(newPosition);
                 lastPosition = newPosition;
+                // hardcoding this part because of time
+                TrailRenderer trailRenderer = GetComponent<TrailRenderer>();
+                if (trailRenderer != null)
+                {
+                    trailRenderer.Clear();
+                }
             }
         }
     }
