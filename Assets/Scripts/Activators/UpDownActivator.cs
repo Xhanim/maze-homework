@@ -49,13 +49,13 @@ public class UpDownActivator : BaseActivator
         if (active || reseting)
         {
             // check Y limits
-            if (gameObject.transform.position.y >= yLimit)
+            if (gameObject.transform.localPosition.y >= yLimit)
             {
                 if (fixOnGoal && !reseting) return;
                 direction = -1;
                 waitingSwift = true;
             }
-            else if (gameObject.transform.position.y <= initialY)
+            else if (gameObject.transform.localPosition.y <= initialY)
             {
                 direction = 1;
                 // if it was resetting to initial y then desactivate completely when done
@@ -72,6 +72,7 @@ public class UpDownActivator : BaseActivator
                     waitingSwift = true;
                 }
             }
+            //gameObject.transform.Translate(new Vector3(0, direction * speed * Time.deltaTime, 0));
             gameObject.transform.position += new Vector3(0, direction * speed * Time.deltaTime, 0);
         }
 
@@ -85,10 +86,10 @@ public class UpDownActivator : BaseActivator
 
     public void OnCollisionExit(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Grabbable"))
+        /*if (!collision.gameObject.CompareTag("Grabbable"))
         {
             collision.gameObject.transform.parent = null;
-        }
+        }*/
     }
 
     public override void Activate(GameObject trigger)
