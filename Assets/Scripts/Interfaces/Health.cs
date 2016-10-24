@@ -3,5 +3,5 @@ using System.Collections;
 
 public interface Health {
 
-    void TakeDamage(int damage);
+    void TakeDamage(GameObject origin, int damage);
 }
