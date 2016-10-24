@@ -7,10 +7,11 @@ public class MovePattern : MonoBehaviour
 
     public enum LoopMode
     {
-        NONE, LOOP, REVERSE, RESTART
+        NONE, RING, REVERSE, RESTART
     }
 
     public List<GameObject> positionObjects;
+    public bool includeOriginalPosition;
     public LoopMode loopMode = LoopMode.NONE;
     public float timePerPosition = 10;
     private float currentTime = 0;
@@ -23,14 +24,18 @@ public class MovePattern : MonoBehaviour
 
     void Start()
     {
-        lastPosition = transform.position;
-        if (loopMode != LoopMode.NONE)
+        if (includeOriginalPosition)
         {
             GameObject originObject = new GameObject();
-            originObject.transform.position = lastPosition;
+            originObject.transform.position = transform.position;
             positionObjects.Insert(0, originObject);
+        }
+        if (positionObjects.Count > 0)
+        {
+            transform.position = positionObjects[0].transform.position;
             currentIndex = 1;
         }
+        lastPosition = transform.position;
         rigidBody = GetComponent<Rigidbody>();
     }
 
@@ -48,7 +53,6 @@ public class MovePattern : MonoBehaviour
         updatePosition(newPosition);
         if (newPosition == currentObject.transform.position)
         {
-            loopCount++;
             currentTime = 0;
             lastPosition = newPosition;
             handleTargetChange();
@@ -72,7 +76,8 @@ public class MovePattern : MonoBehaviour
         currentIndex = currentIndex + 1 * direction;
         if (currentIndex > positionObjects.Count - 1 || currentIndex < 0)
         {
-            if (loopMode == LoopMode.LOOP)
+            loopCount++;
+            if (loopMode == LoopMode.RING)
             {
                 currentIndex = 0;
             }
