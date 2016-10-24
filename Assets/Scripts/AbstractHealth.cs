@@ -11,7 +11,7 @@ public abstract class AbstractHealth : MonoBehaviour, Health
         currentHealth = initialHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(GameObject origin, int damage)
     {
         if (currentHealth > 0)
         {

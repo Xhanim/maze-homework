@@ -12,7 +12,7 @@ public class Fireball : MonoBehaviour {
             Health health = collider.GetComponent<Health>();
             if (health != null)
             {
-                health.TakeDamage(damage);
+                health.TakeDamage(gameObject, damage);
             }
             Destroy(gameObject);
         }
