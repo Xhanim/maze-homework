@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: 240477f6ad793fb4aa7311ce0957be95
+timeCreated: 1477354024
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bone001
+    100002: Bone002
+    100004: Bone003
+    100006: Bone004
+    100008: Bone005
+    100010: Bone006
+    100012: Bone012
+    100014: Bone013
+    100016: Bone014
+    100018: Bone015
+    100020: Bone016
+    100022: Bone017
+    100024: Bone018
+    100026: Bone019
+    100028: Bone020
+    100030: Bone021
+    100032: Bone022
+    100034: Bone023
+    100036: Bone024
+    100038: Bone025
+    100040: Bone026
+    100042: Bone027
+    100044: Bone028
+    100046: Bone029
+    100048: Bone030
+    100050: Box003
+    100052: //RootNode
+    100054: IK Chain001
+    100056: IK Chain002
+    100058: IK Chain003
+    100060: IK Chain004
+    100062: IK Chain005
+    100064: Box001
+    100066: Box002
+    100068: Box005
+    100070: Box006
+    100072: Cone001
+    100074: Cylinder001
+    100076: Cylinder002
+    100078: RoomIntroFireball
+    100080: RoomIntroGrab
+    100082: RoomIntroTeleport
+    400000: Bone001
+    400002: Bone002
+    400004: Bone003
+    400006: Bone004
+    400008: Bone005
+    400010: Bone006
+    400012: Bone012
+    400014: Bone013
+    400016: Bone014
+    400018: Bone015
+    400020: Bone016
+    400022: Bone017
+    400024: Bone018
+    400026: Bone019
+    400028: Bone020
+    400030: Bone021
+    400032: Bone022
+    400034: Bone023
+    400036: Bone024
+    400038: Bone025
+    400040: Bone026
+    400042: Bone027
+    400044: Bone028
+    400046: Bone029
+    400048: Bone030
+    400050: Box003
+    400052: //RootNode
+    400054: IK Chain001
+    400056: IK Chain002
+    400058: IK Chain003
+    400060: IK Chain004
+    400062: IK Chain005
+    400064: Box001
+    400066: Box002
+    400068: Box005
+    400070: Box006
+    400072: Cone001
+    400074: Cylinder001
+    400076: Cylinder002
+    400078: RoomIntroFireball
+    400080: RoomIntroGrab
+    400082: RoomIntroTeleport
+    2300000: Box001
+    2300002: Box002
+    2300004: Box005
+    2300006: Box006
+    2300008: Cone001
+    2300010: Cylinder001
+    2300012: Cylinder002
+    2300014: RoomIntroFireball
+    2300016: RoomIntroGrab
+    2300018: RoomIntroTeleport
+    3300000: Box001
+    3300002: Box002
+    3300004: Box005
+    3300006: Box006
+    3300008: Cone001
+    3300010: Cylinder001
+    3300012: Cylinder002
+    3300014: RoomIntroFireball
+    3300016: RoomIntroGrab
+    3300018: RoomIntroTeleport
+    4300000: Box003
+    4300002: Cylinder001
+    4300004: Box001
+    4300006: Cone001
+    4300008: Cylinder002
+    4300010: RoomIntroGrab
+    4300012: Box002
+    4300014: RoomIntroFireball
+    4300016: RoomIntroTeleport
+    4300018: Box005
+    4300020: Box006
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Box003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
