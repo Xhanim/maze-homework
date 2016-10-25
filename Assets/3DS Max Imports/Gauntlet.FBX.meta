@@ -120,8 +120,17 @@ ModelImporter:
     4300016: RoomIntroTeleport
     4300018: Box005
     4300020: Box006
-    7400000: Take 001
+    7400000: GauntletIdle
+    7400002: GauntletStartGrab
+    7400004: GauntletEndGrab
+    7400006: GauntletStartFireball
+    7400008: GauntletShootFireball
+    7400010: GauntletEndFireball(backwards)
+    7400012: GauntletStartSnap
+    7400014: GauntletSnap
+    7400016: GauntletThumpsUp
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Box003
   materials:
     importMaterials: 1
@@ -143,7 +152,815 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: GauntletIdle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 199
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletStartGrab
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 210
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletEndGrab
+      takeName: Take 001
+      firstFrame: 210
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletStartFireball
+      takeName: Take 001
+      firstFrame: 220
+      lastFrame: 230
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletShootFireball
+      takeName: Take 001
+      firstFrame: 230
+      lastFrame: 235
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletEndFireball(backwards)
+      takeName: Take 001
+      firstFrame: 220
+      lastFrame: 230
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletStartSnap
+      takeName: Take 001
+      firstFrame: 240
+      lastFrame: 250
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletSnap
+      takeName: Take 001
+      firstFrame: 250
+      lastFrame: 260
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GauntletThumpsUp
+      takeName: Take 001
+      firstFrame: 260
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005
+        weight: 1
+      - path: Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone001/Bone012
+        weight: 1
+      - path: Bone001/Bone012/Bone013
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015
+        weight: 1
+      - path: Bone001/Bone012/Bone013/Bone014/Bone015/Bone016
+        weight: 1
+      - path: Bone001/Bone017
+        weight: 1
+      - path: Bone001/Bone017/Bone018
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020
+        weight: 1
+      - path: Bone001/Bone017/Bone018/Bone019/Bone020/Bone021
+        weight: 1
+      - path: Bone001/Bone022
+        weight: 1
+      - path: Bone001/Bone022/Bone023
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024
+        weight: 1
+      - path: Bone001/Bone022/Bone023/Bone024/Bone025
+        weight: 1
+      - path: Bone001/Bone026
+        weight: 1
+      - path: Bone001/Bone026/Bone027
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029
+        weight: 1
+      - path: Bone001/Bone026/Bone027/Bone028/Bone029/Bone030
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -181,7 +998,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
