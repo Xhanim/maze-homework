@@ -8,11 +8,18 @@ public class MovePattern : MonoBehaviour
     {
         NONE, RING, REVERSE, RESTART
     }
-
+    /**
+     * Only used when REVERSE for now!
+     * */
+    public float swiftDelay = 0;
     public List<GameObject> positionObjects;
     public bool includeOriginalPosition;
     public LoopMode loopMode = LoopMode.NONE;
     public float timePerPosition = 10;
+    // directions that will affect
+    public bool affectX = true;
+    public bool affectY = true;
+    public bool affectZ = true;
     private float currentTime = 0;
     private Vector3 lastPosition;
     private int currentIndex = 0;
@@ -20,6 +27,8 @@ public class MovePattern : MonoBehaviour
     private int direction = 1;
     private Rigidbody rigidBody;
     private List<GameObject> currentCollisions = new List<GameObject>();
+    private bool waitingSwift;
+    private float swiftCounter;
 
     void Start()
     {
@@ -42,6 +51,16 @@ public class MovePattern : MonoBehaviour
     {
         if (positionObjects.Count == 0 || loopCount > 0 && loopMode == LoopMode.NONE || loopCount > 0 && positionObjects.Count == 1)
         {
+            return;
+        }
+        if (waitingSwift)
+        {
+            swiftCounter += Time.deltaTime;
+            if (swiftCounter >= swiftDelay)
+            {
+                waitingSwift = false;
+                swiftCounter = 0;
+            }
             return;
         }
         GameObject currentObject = positionObjects[currentIndex];
@@ -84,6 +103,7 @@ public class MovePattern : MonoBehaviour
             {
                 direction *= -1;
                 currentIndex = currentIndex + 2 * direction;
+                waitingSwift = true;
             } else if (loopMode == LoopMode.RESTART)
             {
                 currentIndex = 1;
@@ -112,5 +132,25 @@ public class MovePattern : MonoBehaviour
             newPosition = Vector3.Lerp(lastPosition, nextPosition, step);
         }
         return newPosition;
+    }
+
+    private Vector3 resolveConditionalPosition(Vector3 position)
+    {
+        Vector3 conditionalPosition = Vector3.zero;
+        // shitty if
+        if (affectX)
+        {
+            conditionalPosition.x = position.x;
+        }
+        if (affectY)
+        {
+            conditionalPosition.y = position.y;
+        }
+        if (affectZ)
+        {
+            conditionalPosition.z = position.z;
+        }
+
+        return conditionalPosition;
     }
 }
