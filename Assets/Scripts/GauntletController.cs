@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class GauntletController : MonoBehaviour {
 
     public GameObject gauntletModel;
+    public Material[] powerMaterial;
+    public GameObject powerMaterialHolder;
     private List<MonoBehaviour> powers;
     // 0 = grab, 1 = fireball or 2 = teleport
     private int currentPower;
@@ -60,6 +62,7 @@ public class GauntletController : MonoBehaviour {
             if (i == currentPower)
             {
                 powers[i].enabled = true;
+                powerMaterialHolder.GetComponent<Renderer>().material = powerMaterial[i];
             }else
             {
                 powers[i].enabled = false;
