@@ -13,10 +13,14 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
     private bool inSight;
     private bool switchInSight;
     private Camera camera;
+    // the animator controller from the gauntlet
+    private Animator animator;
 
     void Start()
     {
         camera = GetComponentInChildren<Camera>();
+        // this is shitty code #shame
+        animator = GetComponent<GauntletController>().gauntletModel.GetComponent<Animator>();
     }
 
     void Update () {
@@ -93,6 +97,7 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
             if (hit.collider.gameObject.CompareTag("Grabbable") && !grabbing)
             {
                 target = hit.collider.gameObject;
+                animator.SetBool("grabbing", true);
             }
             if (hit.collider.gameObject.CompareTag("Switch") && grabbing)
             {
@@ -105,6 +110,7 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
             if (!grabbing)
             {
                 target = null;
+                animator.SetBool("grabbing", false);
             }
             inSight = false;
             switchInSight = false;

@@ -9,6 +9,15 @@ public class FireballShooter : MonoBehaviour, ITargetAnalyzer {
     public float impulse = 50;
     public Texture2D crosshair;
     private Camera camera;
+    // the animator controller from the gauntlet
+    private Animator animator;
+    private bool justShoot;
+
+    void Awake()
+    {
+        // this is shitty code #shame
+        animator = GetComponent<GauntletController>().gauntletModel.GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -16,6 +25,11 @@ public class FireballShooter : MonoBehaviour, ITargetAnalyzer {
     }
 
     void Update () {
+        if (justShoot)
+        {
+            justShoot = false;
+            animator.SetBool("fireballShoot", false);
+        }
         if (Input.GetButtonDown("Fire1"))
         {
             // Make spawn look at camera position
@@ -25,7 +39,19 @@ public class FireballShooter : MonoBehaviour, ITargetAnalyzer {
             spawn.transform.LookAt(cameraPosition);
             GameObject ballInstance = Instantiate(prefab, spawn.transform.position, spawn.transform.rotation) as GameObject;
             ballInstance.GetComponent<Rigidbody>().AddForce(spawn.transform.forward * impulse, ForceMode.Impulse);
+            animator.SetBool("fireballShoot", true);
+            justShoot = true;
         }
+    }
+
+    void OnEnable()
+    {
+        animator.SetBool("fireballPower", true);
+    }
+    
+    void OnDisable()
+    {
+        animator.SetBool("fireballPower", false);
     }
 
     public bool InSight()

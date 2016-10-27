@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GauntletController : MonoBehaviour {
-    private List<MonoBehaviour> powers;
 
+    public GameObject gauntletModel;
+    private List<MonoBehaviour> powers;
     // 0 = grab, 1 = fireball or 2 = teleport
     private int currentPower;
     
