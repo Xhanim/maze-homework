@@ -30,7 +30,7 @@ public class Teleporter : MonoBehaviour, ITargetAnalyzer
         if (Physics.Raycast(ray, out hit) && maxDistance >= hit.distance)
         {
             GameObject hitObject = hit.collider.gameObject;
-            teleportWaypoint = hitObject.GetComponentInChildren<TeleportWaypoint>();
+            teleportWaypoint = hitObject.GetComponent<TeleportWaypoint>();
         } else
         {
             teleportWaypoint = null;

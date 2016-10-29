@@ -11,7 +11,7 @@ public class ShootableSwitch : MonoBehaviour, Health {
     {
         foreach (BaseActivator activator in activators)
         {
-            activator.Activate(origin);
+            activator.Activate(gameObject);
         }
     }
 }

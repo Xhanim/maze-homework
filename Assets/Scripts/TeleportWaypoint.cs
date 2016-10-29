@@ -3,12 +3,13 @@ using System.Collections;
 
 public class TeleportWaypoint : MonoBehaviour {
 
+    public GameObject waypointObject;
     public AlignmentX alignmentX = AlignmentX.Center;
     public AlignmentY alignmentY = AlignmentY.Middle;
     public AlignmentZ alignmentZ = AlignmentZ.Center;
 	
 	public void TeleportObject (GameObject gameObject) {
-        Vector3 pos = transform.position;
+        Vector3 pos = waypointObject.transform.position;
         Bounds bounds = gameObject.GetComponent<Collider>().bounds;
 
         float sizeX = bounds.size.x / 2;
