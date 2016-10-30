@@ -20,6 +20,7 @@ public class MovePattern : MonoBehaviour
     public bool affectX = true;
     public bool affectY = true;
     public bool affectZ = true;
+    public bool stopOnCollision;
     private float currentTime = 0;
     private Vector3 lastObjectPosition;
     private int currentIndex = 0;
@@ -30,6 +31,7 @@ public class MovePattern : MonoBehaviour
     private bool waitingSwift;
     private float swiftCounter;
     private Vector3 temp;
+    private Vector3 rayCastOrigin = Vector3.zero;
     /**
      * Contains the original position of this 
      * entity before the loop cycle begins 
@@ -99,12 +101,19 @@ public class MovePattern : MonoBehaviour
 
     private void MoveToNextPosition()
     {
-        currentTime += Time.fixedDeltaTime;
-        float step = currentTime / timePerPosition;
+        float timeStep = currentTime + Time.fixedDeltaTime;
+        float step = timeStep / timePerPosition;
         GameObject nextPositionObject = positionObjects[currentIndex];
         // Get new position between old point and new point
         Vector3 newPosition = GetNewPosition(nextPositionObject.transform.position, step);
-        SetPosition(newPosition);
+        bool result = SetPosition(newPosition);
+        if (!result)
+        {
+            ClearPathPoints();
+            return;
+
+        }
+        currentTime = timeStep;
         // Change target if we have reached our current target
         if (EqualPositions(newPosition, nextPositionObject.transform.position))
         {
@@ -114,10 +123,32 @@ public class MovePattern : MonoBehaviour
         }
     }
 
-    private void SetPosition(Vector3 position)
+    private bool checkCollision(Vector3 newPosition)
+    {
+        Vector3 currentPosition = transform.position;
+        var heading = newPosition - currentPosition;
+        var distance = heading.magnitude;
+        var direction = heading / distance;
+        Bounds bounds = gameObject.GetComponent<Collider>().bounds;
+        rayCastOrigin.x = Mathf.Lerp(bounds.min.x, bounds.max.x, (direction.x + 1) / 2);
+        rayCastOrigin.y = Mathf.Lerp(bounds.min.y, bounds.max.y, (direction.y + 1) / 2);
+        rayCastOrigin.z = Mathf.Lerp(bounds.min.z, bounds.max.z, (direction.z + 1) / 2);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(rayCastOrigin, direction, out hitInfo, distance) && !hitInfo.collider.isTrigger)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private bool SetPosition(Vector3 position)
     {
         // Apply only enabled axis to the new position
         Vector3 newPosition = ResolveConditionalPosition(transform.position, position);
+        if (stopOnCollision && checkCollision(newPosition))
+        {
+            return false;
+        }
         if (rigidBody != null)
         {
             rigidBody.MovePosition(newPosition);
@@ -126,6 +157,7 @@ public class MovePattern : MonoBehaviour
         {
             transform.position = newPosition;
         }
+        return true;
     }
 
     private bool IsIndexOutOfBounds()
