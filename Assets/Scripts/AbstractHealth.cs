@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class AbstractHealth : MonoBehaviour, Health
 {
     public int initialHealth = 1;
-    private int currentHealth;
+    protected int currentHealth;
 
     void Start()
     {

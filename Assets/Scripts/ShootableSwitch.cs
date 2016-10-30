@@ -4,14 +4,19 @@ using System;
 using System.Collections.Generic;
 
 public class ShootableSwitch : MonoBehaviour, Health {
-
+    public bool remainActive = true;
+    private bool isActive;
     public List<BaseActivator> activators;
 
     public void TakeDamage(GameObject origin, int damage)
     {
-        foreach (BaseActivator activator in activators)
+        if (!isActive)
         {
-            activator.Activate(gameObject);
+            foreach (BaseActivator activator in activators)
+            {
+                activator.Activate(gameObject);
+            }
+            isActive = true;
         }
     }
 }
