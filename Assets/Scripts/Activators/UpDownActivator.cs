@@ -28,7 +28,7 @@ public class UpDownActivator : BaseActivator
     // Use this for initialization
     void Start()
     {
-        initialY = gameObject.transform.position.y;
+        initialY = gameObject.transform.localPosition.y;
     }
 
     // Update is called once per frame
