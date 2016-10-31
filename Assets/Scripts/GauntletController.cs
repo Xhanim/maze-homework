@@ -14,9 +14,9 @@ public class GauntletController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         powers = new List<MonoBehaviour>();
-        powers.Add(GetComponent<Grab>());
+       /* powers.Add(GetComponent<Grab>());
         powers.Add(GetComponent<FireballShooter>());
-        powers.Add(GetComponent<Teleporter>());
+        powers.Add(GetComponent<Teleporter>());*/
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class GauntletController : MonoBehaviour {
         // loop to the right
         if (currentPower < 0)
         {
-            currentPower = 2;
+            currentPower = powers.Count - 1;
         }
         UpdatePower();
     }
@@ -47,7 +47,7 @@ public class GauntletController : MonoBehaviour {
     {
         currentPower++;
         // loop to the left
-        if (currentPower > 2)
+        if (currentPower > powers.Count - 1)
         {
             currentPower = 0;
         }
@@ -72,6 +72,13 @@ public class GauntletController : MonoBehaviour {
 
     public ITargetAnalyzer GetTargetAnalyzer()
     {
-        return (ITargetAnalyzer) powers[currentPower];
+        return powers.Count > 0 ? (ITargetAnalyzer) powers[currentPower] : null;
+    }
+
+    public void AddPower(MonoBehaviour power)
+    {
+        powers.Add(power);
+        currentPower = powers.Count-1;
+        UpdatePower();
     }
 }

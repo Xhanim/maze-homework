@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PlayerHealth : AbstractHealth
 {
-    public GameObject checkpoint;
+    public Transform checkpoint;
 
     protected override void OnHealthDepleted()
     {
-        Vector3 newPosition = checkpoint.transform.position;
+        Vector3 newPosition = checkpoint.position;
         newPosition.y += 1;
         transform.position = newPosition;
         currentHealth = initialHealth;
@@ -17,7 +17,7 @@ public class PlayerHealth : AbstractHealth
     {
         if (other.gameObject.CompareTag("Checkpoint"))
         {
-            checkpoint = other.gameObject;
+            checkpoint = other.gameObject.transform.FindChild("Respawn");
         }
     }
 
