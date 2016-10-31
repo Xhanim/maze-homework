@@ -55,7 +55,7 @@ public class UpDownActivator : BaseActivator
                 direction = -1;
                 waitingSwift = true;
             }
-            else if (gameObject.transform.localPosition.y <= initialY)
+            else if (gameObject.transform.localPosition.y <= initialY && direction < 0)
             {
                 direction = 1;
                 // if it was resetting to initial y then desactivate completely when done

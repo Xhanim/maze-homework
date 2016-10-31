@@ -3,26 +3,35 @@ using System.Collections;
 
 public class MovingPlatformUser : MonoBehaviour {
 
-    private bool inPlatform;
-    private bool collided;
-
-    void Update()
+    GameObject getPlatformFromParent()
     {
-        if (collided && !inPlatform)
+        if (transform.parent == null)
         {
-            transform.parent = null;
+            return null;
         }
-        inPlatform = false;
-        collided = false;
+        foreach (Transform child in transform.parent)
+        {
+            if (child.gameObject.tag == "Platform")
+            {
+                return child.gameObject;
+            }
+        }
+        return null;
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        collided = true;
         if (collision.gameObject.tag == "Platform")
         {
-            inPlatform = true;
             transform.parent = collision.transform.parent;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (getPlatformFromParent() == collision.gameObject)
+        {
+            transform.parent = null;
         }
     }
 }
