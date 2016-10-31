@@ -123,7 +123,7 @@ public class MovePattern : MonoBehaviour
         }
     }
 
-    private bool checkCollision(Vector3 newPosition)
+    private bool resolveCollisions(Vector3 newPosition, out Vector3 resolvedPosition)
     {
         Vector3 currentPosition = transform.position;
         var heading = newPosition - currentPosition;
@@ -136,8 +136,13 @@ public class MovePattern : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(rayCastOrigin, direction, out hitInfo, distance) && !hitInfo.collider.isTrigger)
         {
+            resolvedPosition = currentPosition;
+            resolvedPosition.x += direction.x * hitInfo.distance;
+            resolvedPosition.y += direction.y * hitInfo.distance;
+            resolvedPosition.z += direction.z * hitInfo.distance;
             return true;
         }
+        resolvedPosition = newPosition;
         return false;
     }
 
@@ -145,9 +150,12 @@ public class MovePattern : MonoBehaviour
     {
         // Apply only enabled axis to the new position
         Vector3 newPosition = ResolveConditionalPosition(transform.position, position);
-        if (stopOnCollision && checkCollision(newPosition))
+        bool collided = false;
+        if (stopOnCollision)
         {
-            return false;
+            Vector3 resolvedPosition;
+            collided = resolveCollisions(newPosition, out resolvedPosition);
+            newPosition = resolvedPosition;
         }
         if (rigidBody != null)
         {
@@ -156,6 +164,10 @@ public class MovePattern : MonoBehaviour
         else
         {
             transform.position = newPosition;
+        }
+        if (stopOnCollision && collided)
+        {
+            return false;
         }
         return true;
     }
