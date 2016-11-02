@@ -31,7 +31,7 @@ public class MovePattern : MonoBehaviour
     private bool waitingSwift;
     private float swiftCounter;
     private Vector3 temp;
-    private Vector3 rayCastOrigin = Vector3.zero;
+    private Vector3 centerToBoundLimit = Vector3.zero;
     /**
      * Contains the original position of this 
      * entity before the loop cycle begins 
@@ -127,20 +127,26 @@ public class MovePattern : MonoBehaviour
     {
         Vector3 currentPosition = transform.position;
         var heading = newPosition - currentPosition;
-        var distance = heading.magnitude;
-        var direction = heading / distance;
-        Bounds bounds = gameObject.GetComponent<Collider>().bounds;
-        rayCastOrigin.x = Mathf.Lerp(bounds.min.x, bounds.max.x, (direction.x + 1) / 2);
-        rayCastOrigin.y = Mathf.Lerp(bounds.min.y, bounds.max.y, (direction.y + 1) / 2);
-        rayCastOrigin.z = Mathf.Lerp(bounds.min.z, bounds.max.z, (direction.z + 1) / 2);
+        var distanceToMove = heading.magnitude;
+        var direction = heading / distanceToMove;
+        Bounds bounds = gameObject.GetComponentInChildren<Collider>().bounds;
+        centerToBoundLimit.x = bounds.size.x * direction.x / 2;
+        centerToBoundLimit.y = bounds.size.y * direction.y / 2;
+        centerToBoundLimit.z = bounds.size.z * direction.z / 2;
+        float distanceFromCenterToBounds = centerToBoundLimit.magnitude;
+        float raycastDistance = distanceToMove + distanceFromCenterToBounds;
         RaycastHit hitInfo;
-        if (Physics.Raycast(rayCastOrigin, direction, out hitInfo, distance) && !hitInfo.collider.isTrigger)
+        if (Physics.Raycast(bounds.center, direction, out hitInfo, raycastDistance))
         {
-            resolvedPosition = currentPosition;
-            resolvedPosition.x += direction.x * hitInfo.distance;
-            resolvedPosition.y += direction.y * hitInfo.distance;
-            resolvedPosition.z += direction.z * hitInfo.distance;
-            return true;
+            if (!hitInfo.transform.IsChildOf(transform) && !hitInfo.collider.isTrigger)
+            {
+                resolvedPosition = currentPosition;
+                float correctedDistanceToMove = hitInfo.distance - distanceFromCenterToBounds;
+                resolvedPosition.x += direction.x * correctedDistanceToMove;
+                resolvedPosition.y += direction.y * correctedDistanceToMove;
+                resolvedPosition.z += direction.z * correctedDistanceToMove;
+                return true;
+            }
         }
         resolvedPosition = newPosition;
         return false;

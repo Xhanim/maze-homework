@@ -10,7 +10,7 @@ public class ShootableSwitch : MonoBehaviour, Health {
 
     public void TakeDamage(GameObject origin, int damage)
     {
-        if (!isActive)
+        if (!remainActive || !isActive)
         {
             foreach (BaseActivator activator in activators)
             {
