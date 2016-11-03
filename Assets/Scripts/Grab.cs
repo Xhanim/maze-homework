@@ -62,20 +62,31 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
                     script = hit.collider.gameObject.GetComponentInParent<Switch>();
                     // attach it? if returns false then the switch is already taken so it's ignored
                     if (!script.Attach(target)) return;
+                    afterRelease();
                 }
                 else
                 {
-                    // release parent, activate gravity and remove kinematic value
-                    target.transform.parent = null;
-                    objectRigidBody.isKinematic = false;
+                    release();
                 }
-                // clear references and allow grabbing again
-                target = null;
-                objectRigidBody = null;
-                grabbing = false;
-                switchInSight = false;
             }
         }
+    }
+
+    public void release()
+    {
+        // release parent, activate gravity and remove kinematic value
+        target.transform.parent = null;
+        objectRigidBody.isKinematic = false;
+        afterRelease();
+    }
+
+    private void afterRelease()
+    {
+        // clear references and allow grabbing again
+        target = null;
+        objectRigidBody = null;
+        grabbing = false;
+        switchInSight = false;
     }
 
     private Ray getCameraRay()
