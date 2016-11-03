@@ -20,8 +20,8 @@ public class EnemyFireball : MonoBehaviour
         if (currentCooldown >= cooldown)
         {
             currentCooldown = 0;
-            GameObject ballInstance = Instantiate(prefab, spawn.transform.position, gameObject.transform.rotation) as GameObject;
-            ballInstance.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 15, ForceMode.Impulse);
+            GameObject ballInstance = Instantiate(prefab, spawn.transform.position, spawn.transform.rotation) as GameObject;
+            ballInstance.GetComponent<Rigidbody>().AddForce(spawn.transform.forward * 15, ForceMode.Impulse);
         }
     }
 }

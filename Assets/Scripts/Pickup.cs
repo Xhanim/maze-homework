@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour {
      * List to hold activators to call when this switch is "activated".
      * */
     public List<BaseActivator> activators;
+    public GameObject teleportTo;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -19,6 +20,13 @@ public class Pickup : MonoBehaviour {
                  activator.Activate(gameObject);
             }
             Destroy(gameObject);
+
+            if (teleportTo != null)
+            {
+                Vector3 newPosition = teleportTo.transform.position;
+                newPosition.y += 1;
+                other.gameObject.transform.position = newPosition;
+            }
         }
     }
 }

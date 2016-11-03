@@ -15,8 +15,8 @@ public class GauntletController : MonoBehaviour {
 	void Start () {
         powers = new List<MonoBehaviour>();
         powers.Add(GetComponent<Grab>());
-        powers.Add(GetComponent<FireballShooter>());
-        powers.Add(GetComponent<Teleporter>());
+        /*powers.Add(GetComponent<FireballShooter>());
+        powers.Add(GetComponent<Teleporter>());*/
     }
 
     // Update is called once per frame
