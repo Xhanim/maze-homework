@@ -74,6 +74,8 @@ public class Grab : MonoBehaviour, ITargetAnalyzer {
 
     public void release()
     {
+        // avoid double call from the respawn controller
+        if (!grabbing) return;
         // release parent, activate gravity and remove kinematic value
         target.transform.parent = null;
         objectRigidBody.isKinematic = false;
