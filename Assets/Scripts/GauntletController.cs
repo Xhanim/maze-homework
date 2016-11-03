@@ -14,8 +14,8 @@ public class GauntletController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         powers = new List<MonoBehaviour>();
-        powers.Add(GetComponent<Grab>());
-        /*powers.Add(GetComponent<FireballShooter>());
+        /*powers.Add(GetComponent<Grab>());
+        powers.Add(GetComponent<FireballShooter>());
         powers.Add(GetComponent<Teleporter>());*/
     }
 
