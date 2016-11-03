@@ -39,11 +39,17 @@ public class MovePattern : MonoBehaviour
     private GameObject originObject;
     private bool dirty = true;
 
+    void Awake()
+    {
+        originObject = new GameObject();
+        originObject.name = name + " original position";
+        originObject.transform.parent = gameObject.transform.parent;
+        originObject.transform.position = transform.position;
+    }
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        originObject = new GameObject();
-        originObject.name = name + " original position";
         Initialize();
     }
 
