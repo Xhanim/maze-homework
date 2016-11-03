@@ -4,20 +4,19 @@ using System;
 
 public class RelicActivator : BaseActivator {
 
-    private AvatarTeleportTransition teleportTransition;
+    private Transition teleportTransition;
 
     void Start()
     {
-        teleportTransition = GetComponent<AvatarTeleportTransition>();
+        teleportTransition = GetComponent<Transition>();
     }
 
     public override void Activate(GameObject trigger)
     {
-        teleportTransition.enabled = true;
+        teleportTransition.StartTransition();
     }
 
     public override void Desactivate()
     {
-        teleportTransition.enabled = false;
     }
 }
