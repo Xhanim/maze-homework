@@ -12,11 +12,12 @@ public class Transition : MonoBehaviour {
 
     private float currentTime;
     private int direction = 1;
-    private bool begun;
-    private bool ended = true;
-    private bool waiting;
+    private bool started;
+    private bool active;
+    private bool waitingBeforeFadeout;
     private Texture2D texture;
     private GUIStyle guiStyle;
+    private Rect screenRectangle;
     
 
     void Start()
@@ -27,75 +28,98 @@ public class Transition : MonoBehaviour {
         texture.Apply();
         guiStyle = new GUIStyle();
         guiStyle.normal.background = texture;
+        screenRectangle = new Rect();
     }
 
     public void StartTransition()
     {
-        ended = false;
-        begun = false;
-        waiting = false;
+        active = true;
+        started = false;
+        waitingBeforeFadeout = false;
         currentTime = 0;
         direction = 1;
     }
 	
-	// Update is called once per frame
 	void Update () {
-        if (ended)
+        if (!active)
         {
             return;
         }
-        if (!begun)
+        currentTime = currentTime + Time.deltaTime * direction;
+        if (!started)
         {
-            begun = true;
+            started = true;
             OnTransitionBegin();
         }
-        if (waiting)
+        if (waitingBeforeFadeout)
         {
-            currentTime = currentTime + Time.deltaTime;
             if (currentTime >= waitingTime)
             {
-                waiting = false;
-                currentTime = fadeTime;
-                direction = -1;
-                OnWaitingEnd();
+                handleWaitingEnd();
             }
         }
         else
         {
-            currentTime = currentTime + Time.deltaTime * direction;
+            /* 
+             * If the current time bigger than the fadeTime it means 
+             * the fadeIn has finished but if it's lesser than 0 it 
+             * means the fadeOut has finished. 
+             */
             if (currentTime >= fadeTime)
             {
-                waiting = true;
-                currentTime = 0;
-                OnWaitingBegin();
+                handleFadeInEnd();
             }
-            if (currentTime < 0)
+            else if (currentTime < 0)
             {
-                ended = true;
-                OnTransitionEnd();
+                handleFadeOutEnd();
             }
         }
     }
 
+    void handleWaitingEnd()
+    {
+        waitingBeforeFadeout = false;
+        currentTime = fadeTime;
+        direction = -1;
+        OnWaitingEnd();
+    }
+
+    void handleFadeInEnd()
+    {
+        waitingBeforeFadeout = true;
+        currentTime = 0;
+        OnWaitingBegin();
+    }
+
+    void handleFadeOutEnd()
+    {
+        active = false;
+        OnTransitionEnd();
+    }
+
     void OnGUI()
     {
-        if (!ended)
+        if (active)
         {
-            Color lastColor = GUI.color;
-            float alpha;
-            if (waiting)
-            {
-                alpha = 1;
-            } else
-            {
-                alpha = Mathf.Lerp(0, 1, currentTime / fadeTime);
-            }
-            Color newColor = color;
-            newColor.a = alpha;
-            GUI.color = newColor;
-            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), GUIContent.none, guiStyle);
-            GUI.color = lastColor;
+            DrawRectangle();
         }
+    }
+
+    void DrawRectangle()
+    {
+        Color lastColor = GUI.color;
+        float alpha = 1;
+        if (!waitingBeforeFadeout)
+        {
+            alpha = Mathf.Lerp(0, 1, currentTime / fadeTime);
+        }
+        Color newColor = color;
+        newColor.a = alpha;
+        GUI.color = newColor;
+        screenRectangle.width = Screen.width;
+        screenRectangle.height = Screen.height;
+        GUI.Box(screenRectangle, GUIContent.none, guiStyle);
+        GUI.color = lastColor;
     }
 
     void OnTransitionBegin()
@@ -108,7 +132,6 @@ public class Transition : MonoBehaviour {
 
     void OnWaitingBegin()
     {
-
         foreach (BaseTransitionHandler handler in transitionHandlers)
         {
             handler.OnWaitingBegin(this);
@@ -117,7 +140,6 @@ public class Transition : MonoBehaviour {
 
     void OnWaitingEnd()
     {
-
         foreach (BaseTransitionHandler handler in transitionHandlers)
         {
             handler.OnWaitingEnd(this);
@@ -126,7 +148,6 @@ public class Transition : MonoBehaviour {
 
     void OnTransitionEnd()
     {
-
         foreach (BaseTransitionHandler handler in transitionHandlers)
         {
             handler.OnTransitionEnd(this);
