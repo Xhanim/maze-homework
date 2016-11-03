@@ -6,16 +6,20 @@ public class Teleporter : MonoBehaviour, ITargetAnalyzer
 {
     public Texture2D crosshair;
     public float maxDistance = 13;
+    public AudioClip clip;
+    public float volume = 0.8f;
     private TeleportWaypoint teleportWaypoint;
     private Camera camera;
     // the animator controller from the gauntlet
     private Animator animator;
     private bool justShoot;
+    private AudioController audioController;
 
     void Awake()
     {
         // this is shitty code #shame
         animator = GetComponent<GauntletController>().gauntletModel.GetComponent<Animator>();
+        audioController = GameObject.FindGameObjectWithTag("Avatar").GetComponent<AudioController>();
     }
 
     void Start()
@@ -36,6 +40,7 @@ public class Teleporter : MonoBehaviour, ITargetAnalyzer
             teleportWaypoint.TeleportObject(gameObject);
             animator.SetBool("teleportShoot", true);
             justShoot = true;
+            audioController.play(clip, volume);
         }
     }
 

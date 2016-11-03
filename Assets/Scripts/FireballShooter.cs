@@ -8,15 +8,19 @@ public class FireballShooter : MonoBehaviour, ITargetAnalyzer {
     public float aimCenterDistance = 10;
     public float impulse = 50;
     public Texture2D crosshair;
+    public AudioClip clip;
+    public float volume = 0.8f;
     private Camera camera;
     // the animator controller from the gauntlet
     private Animator animator;
     private bool justShoot;
+    private AudioController audioController;
 
     void Awake()
     {
         // this is shitty code #shame
         animator = GetComponent<GauntletController>().gauntletModel.GetComponent<Animator>();
+        audioController = GameObject.FindGameObjectWithTag("Avatar").GetComponent<AudioController>();
     }
 
     void Start()
@@ -41,6 +45,7 @@ public class FireballShooter : MonoBehaviour, ITargetAnalyzer {
             ballInstance.GetComponent<Rigidbody>().AddForce(spawn.transform.forward * impulse, ForceMode.Impulse);
             animator.SetBool("fireballShoot", true);
             justShoot = true;
+            audioController.play(clip, volume);
         }
     }
 
