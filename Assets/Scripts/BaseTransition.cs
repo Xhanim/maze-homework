@@ -31,21 +31,32 @@ public class BaseTransition : MonoBehaviour {
 	void Update () {
         if (!begun)
         {
+            begun = true;
+            OnTransitionBegin();
         }
         if (waiting)
         {
             currentTime = currentTime + Time.deltaTime;
             if (currentTime >= waitingTime)
             {
+                waiting = false;
+                currentTime = fadeTime;
+                direction = -1;
+                OnWaitingEnd();
             }
         } else if (!ended)
         {
             currentTime = currentTime + Time.deltaTime * direction;
             if (currentTime >= fadeTime)
             {
+                waiting = true;
+                currentTime = 0;
+                OnWaitingBegin();
             }
             if (currentTime < 0)
             {
+                ended = true;
+                OnTransitionEnd();
             }
         }
     }
