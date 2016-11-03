@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
-public class BaseTransition : MonoBehaviour {
+public class Transition : MonoBehaviour {
 
     public float fadeTime = 2;
     public float waitingTime = 2;
     public Color color = Color.white;
+    public List<BaseTransitionHandler> transitionHandlers;
+
     private float currentTime;
     private int direction = 1;
     private bool begun;
-    private bool ended;
+    private bool ended = true;
     private bool waiting;
     private Texture2D texture;
     private GUIStyle guiStyle;
-
+    
 
     void Start()
     {
@@ -24,11 +27,23 @@ public class BaseTransition : MonoBehaviour {
         texture.Apply();
         guiStyle = new GUIStyle();
         guiStyle.normal.background = texture;
-        enabled = false;
+    }
+
+    public void StartTransition()
+    {
+        ended = false;
+        begun = false;
+        waiting = false;
+        currentTime = 0;
+        direction = 1;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (ended)
+        {
+            return;
+        }
         if (!begun)
         {
             begun = true;
@@ -44,7 +59,8 @@ public class BaseTransition : MonoBehaviour {
                 direction = -1;
                 OnWaitingEnd();
             }
-        } else if (!ended)
+        }
+        else
         {
             currentTime = currentTime + Time.deltaTime * direction;
             if (currentTime >= fadeTime)
@@ -82,23 +98,38 @@ public class BaseTransition : MonoBehaviour {
         }
     }
 
-    public virtual void OnTransitionBegin()
+    void OnTransitionBegin()
     {
-
+        foreach(BaseTransitionHandler handler in transitionHandlers)
+        {
+            handler.OnTransitionBegin(this);
+        }
     }
 
-    public virtual void OnWaitingBegin()
+    void OnWaitingBegin()
     {
 
+        foreach (BaseTransitionHandler handler in transitionHandlers)
+        {
+            handler.OnWaitingBegin(this);
+        }
     }
 
-    public virtual void OnWaitingEnd()
+    void OnWaitingEnd()
     {
 
+        foreach (BaseTransitionHandler handler in transitionHandlers)
+        {
+            handler.OnWaitingEnd(this);
+        }
     }
 
-    public virtual void OnTransitionEnd()
+    void OnTransitionEnd()
     {
 
+        foreach (BaseTransitionHandler handler in transitionHandlers)
+        {
+            handler.OnTransitionEnd(this);
+        }
     }
 }

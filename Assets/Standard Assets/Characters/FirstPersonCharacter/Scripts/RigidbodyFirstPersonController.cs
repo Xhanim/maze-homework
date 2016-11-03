@@ -11,6 +11,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [Serializable]
         public class MovementSettings
         {
+            public bool canControl = true;
             public float ForwardSpeed = 8.0f;   // Speed when walking forward
             public float BackwardSpeed = 4.0f;  // Speed when walking backwards
             public float StrafeSpeed = 4.0f;    // Speed when walking sideways
@@ -217,6 +218,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     x = CrossPlatformInputManager.GetAxis("Horizontal"),
                     y = CrossPlatformInputManager.GetAxis("Vertical")
                 };
+            if (!movementSettings.canControl)
+            {
+                input.x = 0;
+                input.y = 0;
+            }
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }
