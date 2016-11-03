@@ -19,7 +19,6 @@ public class Transition : MonoBehaviour {
     private GUIStyle guiStyle;
     private Rect screenRectangle;
     
-
     void Start()
     {
         texture = new Texture2D(1, 1);
